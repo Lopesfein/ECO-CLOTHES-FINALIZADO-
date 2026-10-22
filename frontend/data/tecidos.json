@@ -1,0 +1,114 @@
+{
+  "tecidos": [
+    {
+      "id": "algodao",
+      "nome": "Algodão",
+      "notaEcologica": 6,
+      "impactoAmbiental": "Médio",
+      "biodegradabilidade": "Alta",
+      "consumoAgua": "2.700 L por camiseta",
+      "emissaoCarbono": "5,5 kg CO₂ por kg de tecido",
+      "descricao": "Fibra natural amplamente utilizada. Embora seja biodegradável, o cultivo convencional consome muita água e pode usar pesticidas.",
+      "dica": "Prefira algodão orgânico quando possível."
+    },
+    {
+      "id": "algodao_organico",
+      "nome": "Algodão Orgânico",
+      "notaEcologica": 8,
+      "impactoAmbiental": "Baixo",
+      "biodegradabilidade": "Alta",
+      "consumoAgua": "Até 91% menos água que o algodão convencional",
+      "emissaoCarbono": "3,5 kg CO₂ por kg de tecido",
+      "descricao": "Cultivado sem pesticidas sintéticos, com práticas que preservam o solo e reduzem o consumo de água.",
+      "dica": "Uma das melhores escolhas para peças do dia a dia."
+    },
+    {
+      "id": "poliester",
+      "nome": "Poliéster",
+      "notaEcologica": 3,
+      "impactoAmbiental": "Alto",
+      "biodegradabilidade": "Muito baixa",
+      "consumoAgua": "Baixo na produção, alto impacto indireto",
+      "emissaoCarbono": "9,5 kg CO₂ por kg de tecido",
+      "descricao": "Fibra sintética derivada do petróleo. Libera microplásticos na lavagem e demora séculos para se decompor.",
+      "dica": "Evite quando possível; opte por fibras naturais ou recicladas."
+    },
+    {
+      "id": "linho",
+      "nome": "Linho",
+      "notaEcologica": 9,
+      "impactoAmbiental": "Baixo",
+      "biodegradabilidade": "Alta",
+      "consumoAgua": "Muito baixo comparado ao algodão",
+      "emissaoCarbono": "1,5 kg CO₂ por kg de tecido",
+      "descricao": "Fibra natural resistente e durável, com baixo consumo de água e energia na produção.",
+      "dica": "Excelente opção sustentável para roupas de verão."
+    },
+    {
+      "id": "elastano",
+      "nome": "Elastano",
+      "notaEcologica": 2,
+      "impactoAmbiental": "Alto",
+      "biodegradabilidade": "Nenhuma",
+      "consumoAgua": "Baixo",
+      "emissaoCarbono": "Alto — produção petroquímica",
+      "descricao": "Fibra sintética usada para elasticidade. Não biodegradável e dificulta a reciclagem de misturas têxteis.",
+      "dica": "Prefira peças com menor percentual de elastano."
+    },
+    {
+      "id": "nailon",
+      "nome": "Náilon",
+      "notaEcologica": 3,
+      "impactoAmbiental": "Alto",
+      "biodegradabilidade": "Muito baixa",
+      "consumoAgua": "Moderado",
+      "emissaoCarbono": "7,0 kg CO₂ por kg de tecido",
+      "descricao": "Polímero sintético derivado do petróleo. Contribui para a poluição por microplásticos nos oceanos.",
+      "dica": "Evite em peças que serão lavadas com frequência."
+    },
+    {
+      "id": "viscose",
+      "nome": "Viscose",
+      "notaEcologica": 5,
+      "impactoAmbiental": "Médio",
+      "biodegradabilidade": "Alta",
+      "consumoAgua": "Moderado a alto",
+      "emissaoCarbono": "4,0 kg CO₂ por kg de tecido",
+      "descricao": "Fibra de origem celulósica. Pode causar desmatamento se não for de fonte certificada.",
+      "dica": "Busque viscose com certificação FSC ou Lenzing Ecovero."
+    },
+    {
+      "id": "la",
+      "nome": "Lã",
+      "notaEcologica": 7,
+      "impactoAmbiental": "Médio-Baixo",
+      "biodegradabilidade": "Alta",
+      "consumoAgua": "Moderado",
+      "emissaoCarbono": "6,0 kg CO₂ por kg de tecido",
+      "descricao": "Fibra natural, durável e biodegradável. A produção pode gerar metano, mas a durabilidade compensa.",
+      "dica": "Invista em peças de lã de qualidade para maior durabilidade."
+    },
+    {
+      "id": "poliester_reciclado",
+      "nome": "Poliéster Reciclado",
+      "notaEcologica": 6,
+      "impactoAmbiental": "Médio",
+      "biodegradabilidade": "Muito baixa",
+      "consumoAgua": "Baixo",
+      "emissaoCarbono": "5,0 kg CO₂ por kg de tecido",
+      "descricao": "Feito a partir de garrafas PET e outros resíduos. Reduz a dependência de petróleo virgem.",
+      "dica": "Melhor que poliéster virgem, mas ainda libera microplásticos."
+    },
+    {
+      "id": "bambu",
+      "nome": "Bambu",
+      "notaEcologica": 7,
+      "impactoAmbiental": "Baixo-Médio",
+      "biodegradabilidade": "Alta",
+      "consumoAgua": "Baixo",
+      "emissaoCarbono": "2,5 kg CO₂ por kg de tecido",
+      "descricao": "Planta de crescimento rápido com baixo uso de água. Verifique o processo de transformação em tecido.",
+      "dica": "Prefira bambu com processo mecânico, não químico agressivo."
+    }
+  ]
+}

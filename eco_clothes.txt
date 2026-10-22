@@ -1,0 +1,118 @@
+CREATE DATABASE IF NOT EXISTS eco_clothes
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE eco_clothes;
+
+CREATE TABLE IF NOT EXISTS usuarios (
+  id VARCHAR(100) NOT NULL PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  senha TEXT NOT NULL,
+  criadoEm DATETIME NOT NULL,
+  role VARCHAR(50) NOT NULL DEFAULT 'user',
+  fotoPerfil LONGTEXT NULL,
+  tema VARCHAR(20) NOT NULL DEFAULT 'claro'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS analises (
+  id VARCHAR(100) NOT NULL PRIMARY KEY,
+  usuarioId VARCHAR(100) NOT NULL,
+  nome VARCHAR(150) NOT NULL DEFAULT '',
+  marca VARCHAR(150) NOT NULL DEFAULT '',
+  composicao TEXT NOT NULL,
+  resultado TEXT NULL,
+  materiais TEXT NULL,
+  dataCriacao DATETIME NOT NULL,
+  CONSTRAINT fk_analises_usuario
+    FOREIGN KEY (usuarioId) REFERENCES usuarios(id)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS favoritos (
+  id VARCHAR(100) NOT NULL PRIMARY KEY,
+  usuarioId VARCHAR(100) NOT NULL,
+  composicao TEXT NULL,
+  nome TEXT NULL,
+  nota DECIMAL(5,2) NULL,
+  nivel VARCHAR(50) NULL,
+  materiais TEXT NULL,
+  dataAdicionado DATETIME NOT NULL,
+  CONSTRAINT fk_favoritos_usuario
+    FOREIGN KEY (usuarioId) REFERENCES usuarios(id)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS mensagens (
+  id VARCHAR(100) NOT NULL PRIMARY KEY,
+  usuarioId VARCHAR(100) NULL,
+  autor TEXT NOT NULL,
+  texto TEXT NOT NULL,
+  dataCriacao DATETIME NOT NULL,
+  CONSTRAINT fk_mensagens_usuario
+    FOREIGN KEY (usuarioId) REFERENCES usuarios(id)
+    ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS mensagensPrivadas (
+  id VARCHAR(100) NOT NULL PRIMARY KEY,
+  remetenteId VARCHAR(100) NOT NULL,
+  destinatarioId VARCHAR(100) NOT NULL,
+  texto TEXT NOT NULL,
+  dataCriacao DATETIME NOT NULL,
+  lida TINYINT(1) NOT NULL DEFAULT 0,
+  CONSTRAINT fk_mensagens_privadas_remetente
+    FOREIGN KEY (remetenteId) REFERENCES usuarios(id)
+    ON DELETE CASCADE,
+  CONSTRAINT fk_mensagens_privadas_destinatario
+    FOREIGN KEY (destinatarioId) REFERENCES usuarios(id)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS amizades (
+  id VARCHAR(100) NOT NULL PRIMARY KEY,
+  usuarioAId VARCHAR(100) NOT NULL,
+  usuarioBId VARCHAR(100) NOT NULL,
+  dataCriacao DATETIME NOT NULL,
+  UNIQUE KEY amizade_unica (usuarioAId, usuarioBId),
+  CONSTRAINT fk_amizades_usuario_a
+    FOREIGN KEY (usuarioAId) REFERENCES usuarios(id)
+    ON DELETE CASCADE,
+  CONSTRAINT fk_amizades_usuario_b
+    FOREIGN KEY (usuarioBId) REFERENCES usuarios(id)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS convitesAmizade (
+  id VARCHAR(100) NOT NULL PRIMARY KEY,
+  remetenteId VARCHAR(100) NOT NULL,
+  destinatarioId VARCHAR(100) NOT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'pendente',
+  dataCriacao DATETIME NOT NULL,
+  UNIQUE KEY convite_unico (remetenteId, destinatarioId),
+  CONSTRAINT fk_convites_remetente
+    FOREIGN KEY (remetenteId) REFERENCES usuarios(id)
+    ON DELETE CASCADE,
+  CONSTRAINT fk_convites_destinatario
+    FOREIGN KEY (destinatarioId) REFERENCES usuarios(id)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS bloqueios (
+  id VARCHAR(100) NOT NULL PRIMARY KEY,
+  bloqueadorId VARCHAR(100) NOT NULL,
+  bloqueadoId VARCHAR(100) NOT NULL,
+  dataCriacao DATETIME NOT NULL,
+  UNIQUE KEY bloqueio_unico (bloqueadorId, bloqueadoId),
+  CONSTRAINT fk_bloqueios_bloqueador
+    FOREIGN KEY (bloqueadorId) REFERENCES usuarios(id)
+    ON DELETE CASCADE,
+  CONSTRAINT fk_bloqueios_bloqueado
+    FOREIGN KEY (bloqueadoId) REFERENCES usuarios(id)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+SELECT TABLE_NAME
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_SCHEMA = 'eco_clothes'
+ORDER BY TABLE_NAME;
